@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{C2F499FE-5078-45A9-844E-A4C4F36D4A39}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Sample-COR-App/Program.cs">
+    <Files>
+      <File FileName="Sample-COR-App/Program.cs" Line="13" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Sample-COR-App PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>
