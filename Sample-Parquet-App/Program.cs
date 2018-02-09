@@ -19,6 +19,16 @@ namespace Sample_Parquet_App
 
             var config = configBuilder.Build();
 
+            Parquet.CompressionMethod compressionMethod = Parquet.CompressionMethod.None;
+
+            if(!String.IsNullOrEmpty(config["CompressionMethod"]))
+            {
+                if (config["CompressionMethod"].ToLower() == "snappy")
+                    compressionMethod = Parquet.CompressionMethod.Snappy;
+                else if(config["CompressionMethod"].ToLower() == "gzip")
+                    compressionMethod = Parquet.CompressionMethod.Gzip;
+            }
+
             Schema schema = new Schema(
                     new DataField<DateTime>("Timestamp"),
                     new DataField<int>("Priority"),
@@ -29,7 +39,7 @@ namespace Sample_Parquet_App
 
             SampleContext.Run("parquet", (format, numOfFiles, numOfRecords) =>
             {
-                using (var client = new SampleS3Client("parquet", config["BuketName"], config["BuketPath"], Amazon.RegionEndpoint.USEast1))
+                using (var client = new SampleS3Client("parquet", config["BucketName"], config["BucketPath"], Amazon.RegionEndpoint.USEast1))
                 {
                     for (int i = 0; i < numOfFiles; i++)
                     {
@@ -44,7 +54,7 @@ namespace Sample_Parquet_App
                         {
                             using (var writer = new Parquet.ParquetWriter(buffer))
                             {
-                                writer.Write(ds, Parquet.CompressionMethod.None);
+                                writer.Write(ds, compressionMethod);
                             }
 
                             client.PutObject(buffer);

@@ -21,7 +21,7 @@ namespace Sample_Avro_App
 
             SampleContext.Run("avro", (format, numOfFiles, numOfRecords) => 
             {
-                using (var client = new SampleS3Client("avro", config["BuketName"], config["BuketPath"], Amazon.RegionEndpoint.USEast1))
+                using (var client = new SampleS3Client("avro", config["BucketName"], config["BucketPath"], Amazon.RegionEndpoint.USEast1))
                 {
                     for (int i = 0; i < numOfFiles; i++)
                     {
